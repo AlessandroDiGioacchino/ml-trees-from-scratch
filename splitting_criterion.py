@@ -2,7 +2,6 @@
 import abc
 import numpy as np
 
-from datetime import datetime
 
 class SplittingCriterion( metaclass=abc.ABCMeta ):
   '''
