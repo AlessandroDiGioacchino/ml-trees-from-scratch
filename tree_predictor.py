@@ -23,13 +23,14 @@ class TreePredictor:
     The root of this tree predictor.
   splitting_criterion : SplittingCriterion, default=Gini()
     The criterion used to split a leaf.
-  max_depth : int, default=100
+  max_depth : int, default=13
     The maximum depth of the tree predictor.
   min_samples_split : int, default=2
     The minimum amount of samples required to perform a split.
   min_impurity_decrease : float, default=0.0
-
-  n_unique_values : int, default=None
+      The minimum information gain between a parent node and its children
+    required for the corresponding split to happen.
+  n_unique_values : int, default=2**7
     The sample size extracted from all unique values of a feature.
   '''
 
@@ -40,7 +41,7 @@ class TreePredictor:
     max_depth: int = 10,
     min_samples_split: int = 2,
     min_impurity_decrease: float = 0.0,
-    n_unique_values: int = None
+    n_unique_values: int = 2**7
   ) -> None:
 
     self.categorical_features = categorical_features
@@ -145,12 +146,12 @@ class TreePredictor:
       return root
 
     if n_samples <= self.min_samples_split:
-      print( f'Only {n_samples} samples, not splitting' )
+      # print( f'Only {n_samples} samples, not splitting' )
       return root
 
     if self.max_depth <= depth:
-      print( f'Current depth {depth} greater than or equal to maximum depth, '
-              'not splitting' )
+      # print( f'Current depth {depth} greater than or equal to maximum depth, '
+      #         'not splitting' )
 
       return root
 
@@ -166,7 +167,7 @@ class TreePredictor:
     result = asdict( self._pick_feature_and_test( Xs, ys ) )
 
     if ( gain := result[ 'best_gain' ] ) <= self.min_impurity_decrease:
-      print( f'information gain {gain} too small, not splitting' )
+      # print( f'information gain {gain} too small, not splitting' )
       return root
 
     best_feature = result[ 'best_feature' ]
@@ -184,8 +185,8 @@ class TreePredictor:
     if left_mask.size == 0 or right_mask.size == 0:
       return root
 
-    description = ( f"Feature {feature_names[ best_feature ]}"
-      f"{'in' if best_feature in self.categorical_features else '<='}"
+    description = ( f"Feature {feature_names[ best_feature ]} "
+      f"{'in' if best_feature in self.categorical_features else '<='} "
       f"{result[ 'best_set_threshold' ] }" )
 
     left_subset, left_labels = Xs[ left_mask ], ys[ left_mask ]
@@ -298,10 +299,10 @@ class TreePredictor:
           test = numerical_test( feature, t )
           _compute_gain_for_feature( feature, test, t )
 
-    if best_feature is not None:
-      print( f'-- Attribute selected: {feature_names[ best_feature ]}, '
-             f'with set/threshold {best_set_threshold} and '
-             f'gain {best_gain}' )
+    # if best_feature is not None:
+      # print( f'-- Attribute selected: {feature_names[ best_feature ]}, '
+      #        f'with set/threshold {best_set_threshold} and '
+      #        f'gain {best_gain}' )
 
     # Definition of BestSplit class at the bottom
     return BestSplit(
