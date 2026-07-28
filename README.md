@@ -53,18 +53,16 @@ To ensure the correctness of the implementation, the project includes rigorous s
 ## 📈 Visualizations
 ### Principal Component Analysis
 The dataset is projected into 2D space to understand class separability.  
-<!-- *(Insert your image here: ![PCA Plot](images/Report/Mushroom scatter plot.png)) * -->
+![PCA Plot](images/Mushroom scatter plot.png)
 
 ### Decision Tree Structure
 Example of a tree built using the Gini Index and specific stopping criteria.  
-<!-- *(Insert your image here: ![Tree](images/Report/Gini tree.png)) * -->
+![Tree](images/Gini tree.png)
 
 ## ✍️ Author
 **Alessandro Di Gioacchino**  
 Master's Degree in Computer Science - University of Milan.  
 ![LinkedIn Profile](www.linkedin.com/in/alessandrodigioacchino) | ![GitHub](github.com/AlessandroDiGioacchino)
 
-<!--
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
--->
