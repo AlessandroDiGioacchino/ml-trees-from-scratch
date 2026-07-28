@@ -52,12 +52,18 @@ To ensure the correctness of the implementation, the project includes rigorous s
 
 ## 📈 Visualizations
 ### Principal Component Analysis
-The dataset is projected into 2D space to understand class separability.  
-![PCA Plot](images/Mushroom scatter plot.png)
+<details>
+  <summary>The dataset is projected into 2D space to understand class separability.</summary>
+  
+  ![PCA Plot](images/mushroom_scatter_plot.png)
+</details>
 
 ### Decision Tree Structure
-Example of a tree built using the Gini Index and specific stopping criteria.  
-![Tree](images/Gini tree.png)
+<details>
+  <summary>Example of a tree built using the Gini Index and specific stopping criteria.</summary>
+
+  ![Tree](images/gini_tree.png)
+</details>
 
 ## ✍️ Author
 **Alessandro Di Gioacchino**  
