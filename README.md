@@ -1,4 +1,4 @@
-# Machine Learning from Scratch: Decision Tree Classifier
+# Machine learning from scratch: Decision Tree Classifier
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
@@ -8,7 +8,7 @@ Developed as part of the *Statistical Methods for Machine Learning* course at th
 Milan, this project explores the internal mechanics of non-linear predictors, focusing on
 algorithmic efficiency, recursive data structures, and statistical validation.
 
-## 🚀 Key Features
+## 🚀 Key features
 - **Native categorical support** Handles categorical attributes using power set membership tests, eliminating the need for one-hot encoding.
 - **Modular splitting criteria** Implements multiple heterogeneity indices via an Object-Oriented approach:
   - **Gini index**
