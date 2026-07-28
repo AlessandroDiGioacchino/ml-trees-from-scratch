@@ -10,7 +10,7 @@ algorithmic efficiency, recursive data structures, and statistical validation.
 
 ## 🚀 Key features
 - **Native categorical support** Handles categorical attributes using power set membership tests, eliminating the need for one-hot encoding.
-- **Modular splitting criteria** Implements multiple heterogeneity indices via an Object-Oriented approach:
+- **Modular splitting criteria** Implements multiple heterogeneity indices via an object-oriented approach:
   - **Gini index**
   - **Scaled entropy**
   - **Bernoulli standard deviation**
@@ -34,7 +34,7 @@ To ensure the correctness of the implementation, the project includes rigorous s
 - `Node` A class representing internal nodes (decision criteria) and leaves (labels).
 - `TreePredictor` The core class handling the recursive `fit` and `predict` logic.
 - `SplittingCriterion` An abstract base class for implementing modular heterogeneity indices.
-- `Report.pdf` A detailed LaTeX report covering the theoretical background and experimental results.
+- `report.pdf` A detailed LaTeX report covering the theoretical background and experimental results.
 
 ## 🛠 Installation & usage
 1. **Clone the repository**
