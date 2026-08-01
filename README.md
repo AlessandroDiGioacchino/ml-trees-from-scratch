@@ -68,7 +68,7 @@ To ensure the correctness of the implementation, the project includes rigorous s
 ## ✍️ Author
 **Alessandro Di Gioacchino**  
 Master's Degree in Computer Science - University of Milan.  
-![LinkedIn Profile](www.linkedin.com/in/alessandrodigioacchino) | ![GitHub](github.com/AlessandroDiGioacchino)
+[LinkedIn](www.linkedin.com/in/alessandrodigioacchino) | [GitHub](github.com/AlessandroDiGioacchino)
 
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
