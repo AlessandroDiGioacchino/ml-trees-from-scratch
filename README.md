@@ -71,4 +71,4 @@ Master's Degree in Computer Science - University of Milan.
 [LinkedIn](https://www.linkedin.com/in/alessandrodigioacchino) | [GitHub](https://github.com/AlessandroDiGioacchino)
 
 ## 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the `LICENSE` file for details.
