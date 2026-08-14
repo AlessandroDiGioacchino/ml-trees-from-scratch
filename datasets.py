@@ -2,11 +2,62 @@
 import numpy as np
 import pandas as pd
 
+from pathlib import Path
+from urllib.request import urlretrieve
+from zipfile import ZipFile
 
-def load_mushroom_dataset() -> tuple[ np.ndarray, np.ndarray, list[ int ] ]:
-  mushroom = pd.read_csv(
-    './secondary+mushroom+dataset/MushroomDataset/secondary_data.csv', sep=';'
+
+
+MUSHROOM_DATASET_URL = (
+  'https://archive.ics.uci.edu/static/public/848/secondary+mushroom+dataset.zip'
+)
+
+
+def download_mushroom_dataset( data_dir: str | Path = '.' ) -> Path:
+  root = Path( data_dir ).expanduser().resolve()
+  root.mkdir( parents=True, exist_ok=True )
+
+  expected_csv = root / 'MushroomDataset' / 'secondary_data.csv'
+
+  if expected_csv.exists():
+    return expected_csv
+
+  zip_path = root / 'secondary+mushroom+dataset.zip'
+  if not zip_path.exists():
+    print( f'Downloading Mushroom dataset to {zip_path}...' )
+    urlretrieve( MUSHROOM_DATASET_URL, zip_path )
+    print( f'Downloaded Mushroom dataset to {zip_path}.' )
+
+  print( 'Extracting Mushroom dataset...' )
+  with ZipFile( zip_path ) as archive:
+    members = archive.namelist()
+    if len( members ) == 1 and members[0].endswith( '.zip' ):
+      inner_zip_name = members[0]
+      inner_zip_path = root / inner_zip_name
+      inner_zip_path.write_bytes( archive.read( inner_zip_name ) )
+
+      with ZipFile( inner_zip_path ) as inner_archive:
+        inner_archive.extractall( root )
+    else:
+      archive.extractall( root )
+  print( 'Extracted Mushroom dataset.' )
+
+  if expected_csv.exists():
+    return expected_csv
+
+  raise FileNotFoundError(
+    'The Mushroom dataset archive was downloaded but the expected CSV file '
+    f'was not found in {root}. '
+    'The archive structure may have changed or the URL may no longer be valid.'
   )
+
+
+def load_mushroom_dataset( data_dir: str | Path = '.' ) -> tuple[
+  np.ndarray, np.ndarray, list[ int ]
+]:
+
+  csv_path = download_mushroom_dataset( data_dir )
+  mushroom = pd.read_csv( csv_path, sep=';' )
 
   categorical_columns = [
     'cap-shape', 'cap-surface', 'cap-color', 'does-bruise-or-bleed',
