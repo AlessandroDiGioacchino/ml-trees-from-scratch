@@ -6,7 +6,7 @@ import time
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import StratifiedKFold
 
-from ml_trees import DecisionTreeClassifier
+from ml_trees import TreePredictor
 
 
 def manual_gridsearch(
@@ -57,7 +57,7 @@ def manual_gridsearch(
         inner_y_train = outer_y_train[ inner_train_idx ]
         X_val, y_val = outer_X_train[ val_idx ], outer_y_train[ val_idx ]
 
-        clf = DecisionTreeClassifier(
+        clf = TreePredictor(
           categorical_features, max_depth=depth, min_samples_split=split,
           min_impurity_decrease=impurity, n_unique_values=nuv )
 
@@ -77,7 +77,7 @@ def manual_gridsearch(
 
         ix = ix + 1
 
-    clf = DecisionTreeClassifier(
+    clf = TreePredictor(
       categorical_features, max_depth=depth_star, min_samples_split=split_star,
       min_impurity_decrease=impurity_star, n_unique_values=nuv )
 

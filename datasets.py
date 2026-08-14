@@ -28,19 +28,15 @@ def download_mushroom_dataset( data_dir: str | Path = '.' ) -> Path:
     urlretrieve( MUSHROOM_DATASET_URL, zip_path )
     print( f'Downloaded Mushroom dataset to {zip_path}.' )
 
-  print( 'Extracting Mushroom dataset...' )
   with ZipFile( zip_path ) as archive:
-    members = archive.namelist()
-    if len( members ) == 1 and members[0].endswith( '.zip' ):
-      inner_zip_name = members[0]
-      inner_zip_path = root / inner_zip_name
-      inner_zip_path.write_bytes( archive.read( inner_zip_name ) )
+    inner_zip_name = 'MushroomDataset.zip'
+    inner_zip_path = root / inner_zip_name
+    inner_zip_path.write_bytes( archive.read( inner_zip_name ) )
 
-      with ZipFile( inner_zip_path ) as inner_archive:
-        inner_archive.extractall( root )
-    else:
-      archive.extractall( root )
-  print( 'Extracted Mushroom dataset.' )
+    with ZipFile( inner_zip_path ) as inner_archive:
+      print( 'Extracting Mushroom dataset...' )
+      inner_archive.extractall( root )
+      print( 'Extracted Mushroom dataset.' )
 
   if expected_csv.exists():
     return expected_csv

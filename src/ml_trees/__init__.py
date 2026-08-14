@@ -1,5 +1,5 @@
 
-from .tree import TreePredictor as DecisionTreeClassifier
+from .tree import TreePredictor
 
-__all__ = ["DecisionTreeClassifier"]
+__all__ = ["TreePredictor"]
 __version__ = "0.1.0"
