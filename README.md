@@ -81,7 +81,7 @@ Or:
     pip install -e '.[jlab]'
     ```
 
-3. **Run the analysis**
+3. **Run the analysis**  
    Open the provided Jupyter Notebook or Python script to train the model and
    generate performance plots.
 
@@ -107,7 +107,7 @@ Or:
 
 ## ✍️ Author
 **Alessandro Di Gioacchino**
-Master's Degree in Computer Science - University of Milan.
+Master's Degree in Computer Science - University of Milan.  
 [LinkedIn](https://www.linkedin.com/in/alessandrodigioacchino) |
 [GitHub](https://github.com/AlessandroDiGioacchino)
 
