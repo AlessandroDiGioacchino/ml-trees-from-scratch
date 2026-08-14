@@ -1,0 +1,50 @@
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ml-trees-from-scratch"
+version = "0.1.0"
+description = "Machine Learning tree-based models implemented from scratch in Python."
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+authors = [
+    { name = "Alessandro Di Gioacchino" }
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "numpy>=1.20.0",
+]
+
+[project.optional-dependencies]
+# Dependencies for development (install with: pip install -e ".[dev]")
+dev = [
+    "pytest>=7.0",
+    "black",
+    "ruff",
+    "scikit-learn",
+]
+
+# Dependencies for the Jupyter Notebooks
+jlab = [
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "scipy"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+# Standard linting settings
+line-length = 80
+select = ["E", "F", "I"]
